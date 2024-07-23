@@ -11,7 +11,7 @@
 	<groupId>com.creamybites</groupId>
 	<artifactId>creamy-bites-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>creamy-bites-server</name>
 	<description>CreamyBites Backend server</description>
 	<url/>
