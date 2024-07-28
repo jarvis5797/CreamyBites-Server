@@ -1,10 +1,15 @@
 package com.creamybites.creamy_bites_server.entities;
 
-import java.sql.Date;
+
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.creamybites.creamy_bites_server.constants.AddOn;
+import com.creamybites.creamy_bites_server.constants.Rating;
+import com.creamybites.creamy_bites_server.constants.Type;
+import com.creamybites.creamy_bites_server.constants.Variant;
+import com.creamybites.creamy_bites_server.constants.Weight;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -25,9 +30,10 @@ public class Items {
 	
 	private String flavour;
 	
-	private byte[] image;
+	private String image;
 	
-	private Float weight;
+	@Enumerated(EnumType.STRING)
+	private Weight weight;
 	
 	private String description;
 	
@@ -36,14 +42,26 @@ public class Items {
 	@Enumerated(EnumType.STRING)
 	private List<AddOn> add_ons;
 	
+	@Enumerated(EnumType.STRING)
+	private Variant variant;
+	
+	@Enumerated(EnumType.STRING)
+	private Type type;
+	
+	@Enumerated(EnumType.STRING)
+	private Rating rating;
+	
 	@JsonIgnore
 	private Date createdAt;
 	
 	@JsonIgnore
 	private Date updatedAt;
+	
 
-	public Items(Long itemId, String flavour, byte[] image, Float weight, String description, Float price,
-			List<AddOn> add_ons, Date createdAt, Date updatedAt) {
+	
+
+	public Items(Long itemId, String flavour, String image, Weight weight, String description, Float price, 
+			List<AddOn> add_ons,  Variant variant, Type type, Rating rating ,Date createdAt, Date updatedAt ) {
 		this.itemId = itemId;
 		this.flavour = flavour;
 		this.image = image;
@@ -51,6 +69,9 @@ public class Items {
 		this.description = description;
 		this.price = price;
 		this.add_ons = add_ons;
+		this.variant=variant;
+		this.type = type;
+		this.rating = rating;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -74,19 +95,19 @@ public class Items {
 		this.flavour = flavour;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
-	public Float getWeight() {
+	public Weight getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Float weight) {
+	public void setWeight(Weight weight) {
 		this.weight = weight;
 	}
 
@@ -113,6 +134,32 @@ public class Items {
 	public void setAdd_ons(List<AddOn> add_ons) {
 		this.add_ons = add_ons;
 	}
+	
+	
+
+	public Variant getVariant() {
+		return variant;
+	}
+
+	public void setVariant(Variant variant) {
+		this.variant = variant;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -132,10 +179,13 @@ public class Items {
 
 	@Override
 	public String toString() {
-		return "Items [itemId=" + itemId + ", flavour=" + flavour + ", image=" + Arrays.toString(image) + ", weight="
-				+ weight + ", description=" + description + ", price=" + price + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + "]";
+		return "Items [itemId=" + itemId + ", flavour=" + flavour + ", image=" + image + ", weight="
+				+ weight + ", description=" + description + ", price=" + price + ", add_ons=" + add_ons + ", variant="
+				+ variant + ", type=" + type + ", rating=" + rating + ", createdAt=" + createdAt + ", updatedAt="
+				+ updatedAt + "]";
 	}
+
+	
 	
 	
 	
