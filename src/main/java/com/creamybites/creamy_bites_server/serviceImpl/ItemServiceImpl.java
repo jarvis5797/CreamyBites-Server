@@ -43,6 +43,33 @@ public class ItemServiceImpl implements ItemService {
 		}
 		return itemsDaos;
 	}
+
+	@Override
+	public Items getItem(Long id) {
+		return itemsRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public String editItem(Long id , Items item) {
+		Items editItem = itemsRepository.findById(id).orElse(null);
+		editItem.setAdd_ons(item.getAdd_ons());
+		editItem.setFlavour(item.getFlavour());
+		editItem.setDescription(item.getDescription());
+		editItem.setImage(item.getImage());
+		editItem.setPrice(item.getPrice());
+		editItem.setType(item.getType());
+		editItem.setVariant(item.getVariant());
+		editItem.setWeight(item.getWeight());
+		editItem.setUpdatedAt(new Date());
+		itemsRepository.save(editItem);
+		return "Item updated !!";
+	}
+
+	@Override
+	public String deleteItem(Long id) {
+		itemsRepository.deleteById(id);
+		return "Item deleted !!";
+	}
 	
 
 }

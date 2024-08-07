@@ -1,5 +1,7 @@
 package com.creamybites.creamy_bites_server.dao;
 
+import java.util.List;
+
 import com.creamybites.creamy_bites_server.constants.Weight;
 
 public class ItemsDao {
