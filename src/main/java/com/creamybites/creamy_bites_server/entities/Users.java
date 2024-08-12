@@ -36,7 +36,7 @@ public class Users implements UserDetails {
 	
 	private String password;
 	
-	private Integer sector;
+	private String sector;
 	
 	private String flatName;
 	
@@ -52,7 +52,7 @@ public class Users implements UserDetails {
 	@JsonIgnore
 	private Date updatedAt;
 
-	public Users(Long userId, Role role, String userName, String email, String password, Integer sector,
+	public Users(Long userId, Role role, String userName, String email, String password, String sector,
 			String flatName, Long phoneNumber, Carts cart, Date createdAt, Date updatedAt) {
 		this.userId = userId;
 		this.role = role;
@@ -110,11 +110,11 @@ public class Users implements UserDetails {
 		this.password = password;
 	}
 
-	public Integer getSector() {
+	public String getSector() {
 		return sector;
 	}
 
-	public void setSector(Integer sector) {
+	public void setSector(String sector) {
 		this.sector = sector;
 	}
 

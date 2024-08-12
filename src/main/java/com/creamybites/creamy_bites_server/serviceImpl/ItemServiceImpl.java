@@ -35,7 +35,7 @@ public class ItemServiceImpl implements ItemService {
 		for(Items item : items) {
 			ItemsDao itemsDao = new ItemsDao();
 			itemsDao.setFlavour(item.getFlavour());
-			itemsDao.setImageSrc(item.getImage());
+			itemsDao.setImageSrc(item.getImage1());
 			itemsDao.setItemId(item.getItemId());
 			itemsDao.setPrice(item.getPrice());
 			itemsDao.setWeight(item.getWeight());
@@ -55,7 +55,10 @@ public class ItemServiceImpl implements ItemService {
 		editItem.setAdd_ons(item.getAdd_ons());
 		editItem.setFlavour(item.getFlavour());
 		editItem.setDescription(item.getDescription());
-		editItem.setImage(item.getImage());
+		editItem.setImage1(item.getImage1());
+		editItem.setImage2(item.getImage2());
+		editItem.setImage3(item.getImage3());
+		editItem.setImage4(item.getImage4());
 		editItem.setPrice(item.getPrice());
 		editItem.setType(item.getType());
 		editItem.setVariant(item.getVariant());

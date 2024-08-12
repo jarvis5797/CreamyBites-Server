@@ -35,11 +35,9 @@ public class AuthenticationService {
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-			
 			Users user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new IllegalArgumentException("Invalid email or Password"));
-			
 			var jwt = jwtService.generateToken(user);
-			
+			System.out.println(user);
 			JwtAuthenticationResponse authenticationResponse = new JwtAuthenticationResponse(jwt, user);
 			return authenticationResponse;
 			

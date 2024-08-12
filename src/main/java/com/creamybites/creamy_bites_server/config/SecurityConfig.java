@@ -49,7 +49,7 @@ public class SecurityConfig {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		.authorizeHttpRequests(authorize -> authorize
 				.requestMatchers(HttpMethod.POST, "/api/v1/signUp" , "/api/v1/signin").permitAll()
-				.requestMatchers(HttpMethod.GET, "/api/v1/test/**" , "/").permitAll()
+				.requestMatchers(HttpMethod.GET, "/api/v1/test/**" , "/" , "/api/v1/sendOtp/**" , "/api/v1/verifyEmail/**").permitAll()
 				.requestMatchers(HttpMethod.GET, "/api/v1/getallitems" , "/api/v1/getItemById/**").authenticated()
 				.anyRequest().authenticated()
 				)

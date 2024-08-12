@@ -30,7 +30,13 @@ public class Items {
 	
 	private String flavour;
 	
-	private String image;
+	private String image1;
+	
+	private String image2;
+	
+	private String image3;
+	
+	private String image4;
 	
 	@Enumerated(EnumType.STRING)
 	private Weight weight;
@@ -60,16 +66,23 @@ public class Items {
 
 	
 
-	public Items(Long itemId, String flavour, String image, Weight weight, String description, Float price, 
-			List<AddOn> add_ons,  Variant variant, Type type, Rating rating ,Date createdAt, Date updatedAt ) {
+	
+
+	public Items(Long itemId, String flavour, String image1, String image2, String image3, String image4, Weight weight,
+			String description, Float price, List<AddOn> add_ons, Variant variant, Type type, Rating rating,
+			Date createdAt, Date updatedAt) {
+		super();
 		this.itemId = itemId;
 		this.flavour = flavour;
-		this.image = image;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.image3 = image3;
+		this.image4 = image4;
 		this.weight = weight;
 		this.description = description;
 		this.price = price;
 		this.add_ons = add_ons;
-		this.variant=variant;
+		this.variant = variant;
 		this.type = type;
 		this.rating = rating;
 		this.createdAt = createdAt;
@@ -95,12 +108,38 @@ public class Items {
 		this.flavour = flavour;
 	}
 
-	public String getImage() {
-		return image;
+	
+
+	public String getImage1() {
+		return image1;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImage1(String image1) {
+		this.image1 = image1;
+	}
+
+	public String getImage2() {
+		return image2;
+	}
+
+	public void setImage2(String image2) {
+		this.image2 = image2;
+	}
+
+	public String getImage3() {
+		return image3;
+	}
+
+	public void setImage3(String image3) {
+		this.image3 = image3;
+	}
+
+	public String getImage4() {
+		return image4;
+	}
+
+	public void setImage4(String image4) {
+		this.image4 = image4;
 	}
 
 	public Weight getWeight() {
@@ -179,11 +218,13 @@ public class Items {
 
 	@Override
 	public String toString() {
-		return "Items [itemId=" + itemId + ", flavour=" + flavour + ", image=" + image + ", weight="
-				+ weight + ", description=" + description + ", price=" + price + ", add_ons=" + add_ons + ", variant="
-				+ variant + ", type=" + type + ", rating=" + rating + ", createdAt=" + createdAt + ", updatedAt="
-				+ updatedAt + "]";
+		return "Items [itemId=" + itemId + ", flavour=" + flavour + ", image1=" + image1 + ", image2=" + image2
+				+ ", image3=" + image3 + ", image4=" + image4 + ", weight=" + weight + ", description=" + description
+				+ ", price=" + price + ", add_ons=" + add_ons + ", variant=" + variant + ", type=" + type + ", rating="
+				+ rating + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
+	
 
 	
 	
