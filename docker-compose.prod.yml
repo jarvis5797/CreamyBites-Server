@@ -10,4 +10,4 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/creamybites
       SPRING_DATASOURCE_USERNAME: jarvis
       SPRING_DATASOURCE_PASSWORD: 8171@Jarvis
-	network_mode: "host"
+    network_mode: "host"
