@@ -35,7 +35,6 @@ public class AuthenticationController {
 	@PostMapping("/signin")
 	public ResponseEntity<?> signIn(@RequestBody SignInRequest signInRequest){
 		try {
-			System.out.println(signInRequest);
 			JwtAuthenticationResponse authenticationResponse = authenticationService.signIn(signInRequest);
 			return ResponseEntity.status(HttpStatus.CREATED).body(authenticationResponse);
 		}catch (Exception ex) {
