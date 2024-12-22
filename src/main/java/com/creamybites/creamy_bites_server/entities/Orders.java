@@ -2,12 +2,19 @@ package com.creamybites.creamy_bites_server.entities;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
+import com.creamybites.creamy_bites_server.constants.AddOn;
 import com.creamybites.creamy_bites_server.constants.AmountStatus;
 import com.creamybites.creamy_bites_server.constants.OrderStatus;
+import com.creamybites.creamy_bites_server.constants.Rating;
+import com.creamybites.creamy_bites_server.constants.Size;
+import com.creamybites.creamy_bites_server.constants.Type;
+import com.creamybites.creamy_bites_server.constants.Variant;
+import com.creamybites.creamy_bites_server.constants.Weight;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -22,9 +29,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class Orders {
 	
 	@Id
@@ -35,8 +48,8 @@ public class Orders {
 	private Set<Items> items;
 	
 	@ManyToOne
-	@JoinColumn(name= "user")
-	private Users user;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    private Users user;
 	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
@@ -56,103 +69,4 @@ public class Orders {
 	
 	@JsonIgnore
 	private Date updatedAt;
-
-	public Orders(Long orderId, Set<Items> items, OrderStatus orderStatus, Float totalAmount,
-			AmountStatus totalAmountStatus, AmountStatus advanceAmountStatus, Time preprationTime, Date createdAt,
-			Date updatedAt) {
-		this.orderId = orderId;
-		this.items = items;
-		this.orderStatus = orderStatus;
-		this.totalAmount = totalAmount;
-		this.totalAmountStatus = totalAmountStatus;
-		this.advanceAmountStatus = advanceAmountStatus;
-		this.preprationTime = preprationTime;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
-	public Orders() {
-		
-	}
-
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
-
-	public Set<Items> getItems() {
-		return items;
-	}
-
-	public void setItems(Set<Items> items) {
-		this.items = items;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
-	public Float getTotalAmount() {
-		return totalAmount;
-	}
-
-	public void setTotalAmount(Float totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-
-	public AmountStatus getTotalAmountStatus() {
-		return totalAmountStatus;
-	}
-
-	public void setTotalAmountStatus(AmountStatus totalAmountStatus) {
-		this.totalAmountStatus = totalAmountStatus;
-	}
-
-	public AmountStatus getAdvanceAmountStatus() {
-		return advanceAmountStatus;
-	}
-
-	public void setAdvanceAmountStatus(AmountStatus advanceAmountStatus) {
-		this.advanceAmountStatus = advanceAmountStatus;
-	}
-
-	public Time getPreprationTime() {
-		return preprationTime;
-	}
-
-	public void setPreprationTime(Time preprationTime) {
-		this.preprationTime = preprationTime;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Orders [orderId=" + orderId + ", items=" + items + ", totalAmount=" + totalAmount + ", preprationTime="
-				+ preprationTime + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
-	}
-	
-	
-	
 }

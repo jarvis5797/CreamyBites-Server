@@ -1,8 +1,15 @@
 package com.creamybites.creamy_bites_server.entities;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
+import com.creamybites.creamy_bites_server.constants.AddOn;
+import com.creamybites.creamy_bites_server.constants.Rating;
+import com.creamybites.creamy_bites_server.constants.Size;
+import com.creamybites.creamy_bites_server.constants.Type;
+import com.creamybites.creamy_bites_server.constants.Variant;
+import com.creamybites.creamy_bites_server.constants.Weight;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -15,9 +22,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name= "carts")
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class Carts {
 
 	@Id
@@ -29,8 +42,9 @@ public class Carts {
 	
 	private float totalPrice;
 	
-	@OneToOne(mappedBy = "cart")
-	private Users users;
+	@OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false ) 
+    private Users users;
 	
 	@JsonIgnore
 	private Date createdAt;
@@ -38,73 +52,5 @@ public class Carts {
 	@JsonIgnore
 	private Date updatedAt;
 
-	public Carts(Long cartId, Set<Items> items, float totalPrice, Users users, Date createdAt, Date updatedAt) {
-		this.cartId = cartId;
-		this.items = items;
-		this.totalPrice = totalPrice;
-		this.users = users;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
-	public Carts() {
-
-	}
-
-	public Long getCartId() {
-		return cartId;
-	}
-
-	public void setCartId(Long cartId) {
-		this.cartId = cartId;
-	}
-
-	public Set<Items> getItems() {
-		return items;
-	}
-
-	public void setItems(Set<Items> items) {
-		this.items = items;
-	}
-
-	public float getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Carts [cartId=" + cartId + ", totalPrice=" + totalPrice + ", users=" + users + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
-	}
-	
-	
 	
 }

@@ -12,6 +12,7 @@ import com.creamybites.creamy_bites_server.constants.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,6 +26,7 @@ public class Users implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
 	private Long userId;
 	
 	@Enumerated(EnumType.STRING)
@@ -42,10 +44,6 @@ public class Users implements UserDetails {
 	
 	private Long phoneNumber;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Carts cart;
-	
-	
 	@JsonIgnore
 	private Date createdAt;
 	
@@ -53,7 +51,7 @@ public class Users implements UserDetails {
 	private Date updatedAt;
 
 	public Users(Long userId, Role role, String userName, String email, String password, String sector,
-			String flatName, Long phoneNumber, Carts cart, Date createdAt, Date updatedAt) {
+			String flatName, Long phoneNumber, Date createdAt, Date updatedAt) {
 		this.userId = userId;
 		this.role = role;
 		this.userName = userName;
@@ -62,7 +60,6 @@ public class Users implements UserDetails {
 		this.sector = sector;
 		this.flatName = flatName;
 		this.phoneNumber = phoneNumber;
-		this.cart = cart;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -134,13 +131,6 @@ public class Users implements UserDetails {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Carts getCart() {
-		return cart;
-	}
-
-	public void setCart(Carts cart) {
-		this.cart = cart;
-	}
 
 	public Date getCreatedAt() {
 		return createdAt;
