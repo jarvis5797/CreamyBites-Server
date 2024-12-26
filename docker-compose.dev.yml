@@ -5,7 +5,7 @@ services:
       context: ../CreamyBites/CreamyBites
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
+      - "3000:3000"
     command: npm run dev
     volumes:
       - ../CreamyBites/CreamyBites:/app
