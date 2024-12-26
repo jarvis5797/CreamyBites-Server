@@ -2,7 +2,7 @@
 services:
   frontend:
     build:
-      context: ../CreamyBites/Creamybites
+      context: ../CreamyBites/CreamyBites
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
